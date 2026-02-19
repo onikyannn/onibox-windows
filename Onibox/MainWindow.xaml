@@ -1,0 +1,254 @@
+<Window x:Class="Onibox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:Onibox"
+        xmlns:notify="using:H.NotifyIcon"
+        mc:Ignorable="d"
+        Title="{local:Loc Key=App.Title}">
+    <Window.SystemBackdrop>
+        <MicaBackdrop Kind="Base"/>
+    </Window.SystemBackdrop>
+    <Grid x:Name="RootGrid"
+          Loaded="RootGrid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <notify:TaskbarIcon x:Name="TrayIcon"
+                            ToolTipText="{local:Loc Key=Tray.Tooltip.Short}"
+                            ContextMenuMode="PopupMenu"
+                            DoubleClickCommand="{x:Bind TrayDoubleClickCommand}">
+            <notify:TaskbarIcon.IconSource>
+                <BitmapImage UriSource="ms-appx:///icon.ico" />
+            </notify:TaskbarIcon.IconSource>
+            <notify:TaskbarIcon.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Text="{local:Loc Key=Action.Connect}"
+                                    Command="{x:Bind TrayToggleCommand}" />
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem Text="{local:Loc Key=Tray.Menu.UpdateConfig}"
+                                    Command="{x:Bind TrayUpdateConfigCommand}" />
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem Text="{local:Loc Key=Tray.Menu.ShowWindow}"
+                                    Command="{x:Bind TrayShowCommand}" />
+                    <MenuFlyoutItem Text="{local:Loc Key=Tray.Menu.Exit}"
+                                    Command="{x:Bind TrayExitCommand}" />
+                </MenuFlyout>
+            </notify:TaskbarIcon.ContextFlyout>
+        </notify:TaskbarIcon>
+
+        <Grid x:Name="AppTitleBar"
+              Grid.Row="0"
+              Height="60"
+              Padding="24,20,24,0">
+            <TextBlock Text="{local:Loc Key=Tray.Tooltip.Short}"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       VerticalAlignment="Center" />
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Padding="24"
+              RowSpacing="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <InfoBar x:Name="StatusInfoBar"
+                     Grid.Row="0"
+                     IsOpen="True"
+                     CornerRadius="6"
+                     IsClosable="False"
+                     Severity="Informational"
+                     Title="{local:Loc Key=Status.Title}"
+                     Message="{local:Loc Key=Status.Disconnected}" />
+
+            <StackPanel Grid.Row="1"
+                        Spacing="6">
+                <Border Padding="16"
+                        CornerRadius="6"
+                        Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefault}"
+                        BorderThickness="1">
+
+                    <StackPanel Spacing="12">
+                        <Grid VerticalAlignment="Center"
+                              ColumnDefinitions="*,Auto">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        Spacing="12"
+                                        Grid.Column="0">
+                                <SymbolIcon Symbol="Link"
+                                            Width="20"
+                                            Height="20"
+                                            Margin="2,0,6,0"
+                                            VerticalAlignment="Center" />
+                                <StackPanel Orientation="Vertical"
+                                            VerticalAlignment="Center"
+                                            Spacing="2"
+                                            MinWidth="300">
+                                    <TextBlock Text="{local:Loc Key=Section.Connection.Title}"
+                                               Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <TextBlock Text="{local:Loc Key=Section.Connection.Description}"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" 
+                                               Style="{ThemeResource CaptionTextBlockStyle}" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="12"
+                                        VerticalAlignment="Center"
+                                        Grid.Column="1">
+                                <ProgressRing x:Name="ConnectionProgressRing"
+                                              Width="24"
+                                              Height="24"
+                                              IsActive="False"
+                                              Visibility="Collapsed" />
+                                <Button x:Name="ConnectButton"
+                                        MinWidth="200"
+                                        Height="40"
+                                        Style="{ThemeResource AccentButtonStyle}"
+                                        Click="ConnectButton_Click">
+                                    <StackPanel Orientation="Horizontal"
+                                                Spacing="8"
+                                                HorizontalAlignment="Center">
+                                        <SymbolIcon x:Name="ConnectButtonIcon"
+                                                    Symbol="Play"/>
+                                        <TextBlock x:Name="ConnectButtonText"
+                                                   Text="{local:Loc Key=Action.Connect}"
+                                                   Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Padding="16"
+                        CornerRadius="6"
+                        Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefault}"
+                        BorderThickness="1">
+
+                    <StackPanel Spacing="12">
+                        <Grid ColumnDefinitions="Auto,*"
+                              VerticalAlignment="Center">
+                            <SymbolIcon Symbol="Document"
+                                        Width="20"
+                                        Height="20"
+                                        VerticalAlignment="Center"
+                                        Margin="2,0,18,0" />
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Horizontal"
+                                        Spacing="12">
+                                <TextBox x:Name="ConfigUrlTextBox"
+                                         Width="400"
+                                         IsSpellCheckEnabled="false"
+                                         Header="{local:Loc Key=Field.ConfigUrl.Header}"
+                                         PlaceholderText="{local:Loc Key=Field.ConfigUrl.Placeholder}" />
+                                <Button x:Name="UpdateConfigButton"
+                                        Width="120"
+                                        VerticalAlignment="Bottom"
+                                        Click="UpdateConfigButton_Click">
+                                    <StackPanel Orientation="Horizontal"
+                                                Spacing="8">
+                                        <SymbolIcon Symbol="Refresh" />
+                                        <TextBlock Text="{local:Loc Key=Action.UpdateConfiguration}" />
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Padding="16"
+                        CornerRadius="6"
+                        Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefault}"
+                        BorderThickness="1">
+
+                    <StackPanel Spacing="12">
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              VerticalAlignment="Center">
+                            <SymbolIcon Symbol="Setting"
+                                        Width="20"
+                                        Height="20"
+                                        VerticalAlignment="Center"
+                                        Margin="2,0,18,0" />
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Vertical"
+                                        Spacing="2"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="{local:Loc Key=Field.InboundMode.Title}"
+                                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                <TextBlock Text="{local:Loc Key=Field.InboundMode.Description}"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           Style="{ThemeResource CaptionTextBlockStyle}" />
+                            </StackPanel>
+                            <ComboBox x:Name="InboundModeComboBox"
+                                      Grid.Column="2"
+                                      Width="140"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Center"
+                                      SelectionChanged="InboundModeComboBox_SelectionChanged">
+                                <ComboBoxItem Content="{local:Loc Key=Field.InboundMode.Proxy}"
+                                              Tag="proxy" />
+                                <ComboBoxItem Content="{local:Loc Key=Field.InboundMode.Tun}"
+                                              Tag="tun" />
+                            </ComboBox>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Padding="16"
+                        CornerRadius="6"
+                        Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefault}"
+                        BorderThickness="1">
+
+                    <StackPanel Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto,Auto"
+                              VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="12"
+                                        VerticalAlignment="Center">
+                                <SymbolIcon Symbol="Clock"
+                                            Width="20"
+                                            Height="20"
+                                            Margin="2,0,6,0"
+                                            VerticalAlignment="Center" />
+                                <StackPanel Orientation="Vertical"
+                                            VerticalAlignment="Center"
+                                            Spacing="2">
+                                    <TextBlock Text="{local:Loc Key=Toggle.AutoStart.Title}"
+                                               Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <TextBlock Text="{local:Loc Key=Toggle.AutoStart.Description}"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" 
+                                               Style="{ThemeResource CaptionTextBlockStyle}" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1"
+                                        Width="48"
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center">
+                                <TextBlock x:Name="AutoStartStateText"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2"
+                                        Width="48"
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center">
+                                <ToggleSwitch x:Name="AutoStartToggleSwitch"
+                                              VerticalAlignment="Center"
+                                              OffContent="{x:Null}"
+                                              OnContent="{x:Null}"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

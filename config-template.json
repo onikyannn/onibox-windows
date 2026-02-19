@@ -1,0 +1,109 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "error",
+    "output": "singbox.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "google",
+        "type": "tls",
+        "server": "8.8.8.8"
+      },
+      {
+        "tag": "local",
+        "type": "local"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": [
+          "domains-direct",
+          "geoip-ru"
+        ],
+        "action": "route",
+        "server": "local"
+      }
+    ],
+    "strategy": "prefer_ipv4"
+  },
+  "inbounds": [
+    {
+      "tag": "mixed",
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 6789,
+      "reuse_addr": true,
+      "tcp_fast_open": true
+    },
+    {
+      "tag": "tun",
+      "type": "tun",
+      "address": "172.19.0.1/30",
+      "auto_route": true,
+      "mtu": 4064,
+      "sniff": true,
+      "sniff_timeout": "1s",
+      "sniff_override_destination": true
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "type": "direct"
+    },
+    // your outbounds here
+    {
+      "type": "urltest",
+      "tag": "proxy",
+      "outbounds": [
+        // your outbounds tags here
+      ]
+    }
+  ],
+  "route": {
+    "rule_set": [
+      {
+        "tag": "geoip-ru",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "proxy",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-ru.srs"
+      },
+      {
+        "tag": "geosite-ru",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "proxy",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ru.srs"
+      }
+    ],
+    "rules": [
+      {
+        "action": "resolve"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geosite-ru",
+          "geoip-ru"
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "google"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db"
+    }
+  }
+}

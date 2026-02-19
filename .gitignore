@@ -1,0 +1,5 @@
+.DS_Store
+**/bin/
+**/obj/
+msbuild.log
+Onibox/Resources/sing-box.exe

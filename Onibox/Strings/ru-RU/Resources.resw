@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="Tray.Menu.ShowWindow" xml:space="preserve">
+    <value>Показать окно</value>
+  </data>
+  <data name="Tray.Menu.UpdateConfig" xml:space="preserve">
+    <value>Обновить конфиг</value>
+  </data>
+  <data name="Tray.Menu.Exit" xml:space="preserve">
+    <value>Выйти из программы</value>
+  </data>
+  <data name="Status.Title" xml:space="preserve">
+    <value>Состояние</value>
+  </data>
+  <data name="Section.Connection.Title" xml:space="preserve">
+    <value>Подключение</value>
+  </data>
+  <data name="Section.Connection.Description" xml:space="preserve">
+    <value>Управляйте подключением и системным прокси.</value>
+  </data>
+  <data name="Field.ConfigUrl.Header" xml:space="preserve">
+    <value>Конфигурация</value>
+  </data>
+  <data name="Field.ConfigUrl.Placeholder" xml:space="preserve">
+    <value>https://example.com/config.json или C:\\config.json</value>
+  </data>
+  <data name="Field.InboundMode.Title" xml:space="preserve">
+    <value>Режим работы</value>
+  </data>
+  <data name="Field.InboundMode.Description" xml:space="preserve">
+    <value>Выберите, как маршрутизировать трафик.</value>
+  </data>
+  <data name="Field.InboundMode.Proxy" xml:space="preserve">
+    <value>Прокси</value>
+  </data>
+  <data name="Field.InboundMode.Tun" xml:space="preserve">
+    <value>Туннель</value>
+  </data>
+  <data name="Action.UpdateConfiguration" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="Toggle.AutoStart.Title" xml:space="preserve">
+    <value>Автозапуск</value>
+  </data>
+  <data name="Toggle.AutoStart.Description" xml:space="preserve">
+    <value>Запускать Onibox при старте Windows.</value>
+  </data>
+  <data name="Toggle.AutoStart.Off" xml:space="preserve">
+    <value>Выкл.</value>
+  </data>
+  <data name="Toggle.AutoStart.On" xml:space="preserve">
+    <value>Вкл.</value>
+  </data>
+
+  <data name="App.Title" xml:space="preserve">
+    <value>Onibox</value>
+  </data>
+  <data name="Dialog.Error.Title" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Dialog.Auth.Title" xml:space="preserve">
+    <value>Требуется авторизация</value>
+  </data>
+  <data name="Dialog.Auth.Username" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Dialog.Auth.Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Dialog.OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Dialog.CancelButton" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Status.Connected" xml:space="preserve">
+    <value>Подключено</value>
+  </data>
+  <data name="Status.Disconnected" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="Status.Connecting" xml:space="preserve">
+    <value>Подключение...</value>
+  </data>
+  <data name="Status.Disconnecting" xml:space="preserve">
+    <value>Отключение...</value>
+  </data>
+  <data name="Status.Updating" xml:space="preserve">
+    <value>Обновление...</value>
+  </data>
+  <data name="Action.Connect" xml:space="preserve">
+    <value>Подключить</value>
+  </data>
+  <data name="Action.Disconnect" xml:space="preserve">
+    <value>Отключить</value>
+  </data>
+  <data name="Tray.Tooltip.Format" xml:space="preserve">
+    <value>Onibox: {0}</value>
+  </data>
+  <data name="Tray.Tooltip.Short" xml:space="preserve">
+    <value>Onibox</value>
+  </data>
+  <data name="Message.ConfigUpdated" xml:space="preserve">
+    <value>Конфигурация обновлена.</value>
+  </data>
+  <data name="Message.DownloadConfigFirst" xml:space="preserve">
+    <value>Сначала скачайте конфигурацию.</value>
+  </data>
+  <data name="Message.ProxyEnableFailed" xml:space="preserve">
+    <value>Не удалось включить системный прокси: {0}</value>
+  </data>
+  <data name="Message.ProxyDetectFailed" xml:space="preserve">
+    <value>Не удалось определить параметры системного прокси: {0}</value>
+  </data>
+  <data name="Message.ProxyRestoreFailed" xml:space="preserve">
+    <value>Не удалось восстановить системный прокси: {0}</value>
+  </data>
+  <data name="Message.AutoStartFailed" xml:space="preserve">
+    <value>Не удалось изменить автозапуск. Проверьте права доступа.</value>
+  </data>
+  <data name="Message.LogPathWithErrorFormat" xml:space="preserve">
+    <value>{0}&#10;Лог: {1}</value>
+  </data>
+  <data name="Error.ConfigUrl.Required" xml:space="preserve">
+    <value>Укажите URL конфигурации.</value>
+  </data>
+  <data name="Error.ConfigUrl.Scheme" xml:space="preserve">
+    <value>URL должен начинаться с http:// или https://, либо быть локальным путем к файлу.</value>
+  </data>
+  <data name="Error.ConfigFile.Missing" xml:space="preserve">
+    <value>Файл конфигурации не найден.</value>
+  </data>
+  <data name="Error.BasicAuth.Required" xml:space="preserve">
+    <value>Требуется авторизация.</value>
+  </data>
+  <data name="Error.BasicAuth.Invalid" xml:space="preserve">
+    <value>Неверный логин или пароль.</value>
+  </data>
+  <data name="Error.Inbound.MissingForMode" xml:space="preserve">
+    <value>Inbound для режима '{0}' не найден в конфигурации.</value>
+  </data>
+  <data name="Error.MixedInbound.PortMissing" xml:space="preserve">
+    <value>В inbound mixed не указан корректный listen_port (или port).</value>
+  </data>
+  <data name="Error.SystemProxy.SettingsOpenFailed" xml:space="preserve">
+    <value>Не удалось открыть настройки системного прокси.</value>
+  </data>
+  <data name="Error.SingBoxExe.Missing" xml:space="preserve">
+    <value>sing-box.exe не найден рядом с приложением.</value>
+  </data>
+  <data name="Error.SingBox.StartFailed" xml:space="preserve">
+    <value>Не удалось запустить sing-box.</value>
+  </data>
+  <data name="Error.Ui.DispatchFailed" xml:space="preserve">
+    <value>Не удалось запланировать действие на UI-потоке.</value>
+  </data>
+</root>

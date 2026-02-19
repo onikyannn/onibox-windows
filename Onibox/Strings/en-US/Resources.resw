@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="Tray.Menu.ShowWindow" xml:space="preserve">
+    <value>Show window</value>
+  </data>
+  <data name="Tray.Menu.UpdateConfig" xml:space="preserve">
+    <value>Update config</value>
+  </data>
+  <data name="Tray.Menu.Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Status.Title" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Section.Connection.Title" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Section.Connection.Description" xml:space="preserve">
+    <value>Manage the connection and system proxy.</value>
+  </data>
+  <data name="Field.ConfigUrl.Header" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="Field.ConfigUrl.Placeholder" xml:space="preserve">
+    <value>https://example.com/config.json or C:\\config.json</value>
+  </data>
+  <data name="Field.InboundMode.Title" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="Field.InboundMode.Description" xml:space="preserve">
+    <value>Select how traffic should be routed.</value>
+  </data>
+  <data name="Field.InboundMode.Proxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="Field.InboundMode.Tun" xml:space="preserve">
+    <value>TUN</value>
+  </data>
+  <data name="Action.UpdateConfiguration" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Toggle.AutoStart.Title" xml:space="preserve">
+    <value>Autostart</value>
+  </data>
+  <data name="Toggle.AutoStart.Description" xml:space="preserve">
+    <value>Launch Onibox on Windows startup.</value>
+  </data>
+  <data name="Toggle.AutoStart.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Toggle.AutoStart.On" xml:space="preserve">
+    <value>On</value>
+  </data>
+
+  <data name="App.Title" xml:space="preserve">
+    <value>Onibox</value>
+  </data>
+  <data name="Dialog.Error.Title" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Dialog.Auth.Title" xml:space="preserve">
+    <value>Authentication required</value>
+  </data>
+  <data name="Dialog.Auth.Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Dialog.Auth.Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Dialog.OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Dialog.CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Status.Connected" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="Status.Disconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="Status.Connecting" xml:space="preserve">
+    <value>Connecting...</value>
+  </data>
+  <data name="Status.Disconnecting" xml:space="preserve">
+    <value>Disconnecting...</value>
+  </data>
+  <data name="Status.Updating" xml:space="preserve">
+    <value>Updating...</value>
+  </data>
+  <data name="Action.Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="Action.Disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="Tray.Tooltip.Format" xml:space="preserve">
+    <value>Onibox: {0}</value>
+  </data>
+  <data name="Tray.Tooltip.Short" xml:space="preserve">
+    <value>Onibox</value>
+  </data>
+  <data name="Message.ConfigUpdated" xml:space="preserve">
+    <value>Configuration updated.</value>
+  </data>
+  <data name="Message.DownloadConfigFirst" xml:space="preserve">
+    <value>Download the configuration first.</value>
+  </data>
+  <data name="Message.ProxyEnableFailed" xml:space="preserve">
+    <value>Failed to enable system proxy: {0}</value>
+  </data>
+  <data name="Message.ProxyDetectFailed" xml:space="preserve">
+    <value>Failed to determine system proxy parameters: {0}</value>
+  </data>
+  <data name="Message.ProxyRestoreFailed" xml:space="preserve">
+    <value>Failed to restore system proxy: {0}</value>
+  </data>
+  <data name="Message.AutoStartFailed" xml:space="preserve">
+    <value>Failed to change auto-start. Check permissions.</value>
+  </data>
+  <data name="Message.LogPathWithErrorFormat" xml:space="preserve">
+    <value>{0}&#10;Log: {1}</value>
+  </data>
+  <data name="Error.ConfigUrl.Required" xml:space="preserve">
+    <value>Provide the configuration URL.</value>
+  </data>
+  <data name="Error.ConfigUrl.Scheme" xml:space="preserve">
+    <value>URL must start with http:// or https://, or be a local file path.</value>
+  </data>
+  <data name="Error.ConfigFile.Missing" xml:space="preserve">
+    <value>Configuration file not found.</value>
+  </data>
+  <data name="Error.BasicAuth.Required" xml:space="preserve">
+    <value>Authentication is required.</value>
+  </data>
+  <data name="Error.BasicAuth.Invalid" xml:space="preserve">
+    <value>Invalid username or password.</value>
+  </data>
+  <data name="Error.Inbound.MissingForMode" xml:space="preserve">
+    <value>Inbound for mode '{0}' was not found in configuration.</value>
+  </data>
+  <data name="Error.MixedInbound.PortMissing" xml:space="preserve">
+    <value>Mixed inbound is missing a valid listen_port (or port).</value>
+  </data>
+  <data name="Error.SystemProxy.SettingsOpenFailed" xml:space="preserve">
+    <value>Failed to open system proxy settings.</value>
+  </data>
+  <data name="Error.SingBoxExe.Missing" xml:space="preserve">
+    <value>sing-box.exe was not found next to the app.</value>
+  </data>
+  <data name="Error.SingBox.StartFailed" xml:space="preserve">
+    <value>Failed to start sing-box.</value>
+  </data>
+  <data name="Error.Ui.DispatchFailed" xml:space="preserve">
+    <value>Failed to schedule an action on the UI thread.</value>
+  </data>
+</root>
