@@ -20,7 +20,7 @@
     "rules": [
       {
         "rule_set": [
-          "domains-direct",
+          "geosite-ru",
           "geoip-ru"
         ],
         "action": "route",
